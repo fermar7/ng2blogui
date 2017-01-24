@@ -14,4 +14,4 @@ import { NavBarComponent } from './navbar.component'
         NavBarComponent
     ]
 })
-export class CommonModule { }
+export class AppCommonModule { }

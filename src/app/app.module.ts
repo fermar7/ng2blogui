@@ -10,10 +10,10 @@ import { routing } from './app.routing'
 import { ModuleWithProviders } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 
-import { CommonModule } from './common/common.module'
+import { AppCommonModule } from './common/app-common.module'
 import { SidebarModule } from './sidebar/sidebar.module'
-import { EntriesModule } from './entries/entries.module'
 
+import {EntryService} from './services/entry.service'
 
 @NgModule({
   declarations: [
@@ -24,13 +24,14 @@ import { EntriesModule } from './entries/entries.module'
     BrowserModule,
     FormsModule,
     HttpModule,
-    CommonModule,
+    AppCommonModule,
     SidebarModule,
     RouterModule,
-    EntriesModule,
     routing
   ],
-  providers: [],
+  providers: [
+    EntryService
+  ],
   bootstrap: [
     AppComponent
   ]
