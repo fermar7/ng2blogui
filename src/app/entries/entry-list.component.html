@@ -1,5 +1,30 @@
-<ul>
-    <li *ngFor="let entry of entries">
-        {{ entry | json }}
-    </li>
-</ul>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div *ngIf="isLoading" class="text-center">
+            <i class="fa fa-spinner fa-spin fa-2x" aria-hidden="true"></i>
+        </div>
+        <ul *ngIf="!isLoading" class="list-group">
+            <list-entry *ngFor="let entry of entries; let i = index;" [entry]="entry" [ix]="i"></list-entry>
+        </ul>
+    </div>
+    <div class="panel-footer">
+        <div class="text-center">
+            <ul class="pagination pagination-sm text-center">
+                <li [class.disabled]="currPage == 1">
+                    <a [routerLink]="['/entries']" [queryParams]="{page: prevPage}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li *ngFor="let num of pages" [class.active]="num == currPage">
+                    <a [routerLink]="['/entries']" [queryParams]="{page: num}">{{ num }}</a>
+                </li>
+               
+                <li [class.disabled]="currPage == pages.length">
+                    <a [routerLink]="['/entries']" [queryParams]="{page: nextPage}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EntriesComponent } from './entries.component'
 
 import { EntryListComponent } from './entry-list.component'
+import { ListEntryComponent } from './list-entry.component'
 
 import { routing } from './entries.routing'
 
@@ -16,7 +17,8 @@ import { routing } from './entries.routing'
 @NgModule({
     declarations: [
         EntriesComponent,
-        EntryListComponent
+        EntryListComponent,
+        ListEntryComponent
     ],
     imports: [
         CommonModule,
