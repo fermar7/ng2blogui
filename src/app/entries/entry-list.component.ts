@@ -44,12 +44,19 @@ export class EntryListComponent implements OnInit {
 
     ngOnInit() {
         this._activatedRoute.queryParams
-            .switchMap((params: Params) => params['page'])
-            .subscribe(param => {
+            .subscribe((params: Params) => {
+                
                 this.isLoading = true;
-                this.currPage = +param;
 
-                this.entries = this._entryService.getEntries(+param);
+                if(params['page']) {
+                    this.currPage = +params['page'];
+                } else {
+                    this.currPage = 1;
+                }
+
+                
+
+                this.entries = this._entryService.getEntries(this.currPage);
                 this.pages = this._entryService.getPageCount();
 
                 this.nextPage = this.currPage < this.pages.length ? this.currPage + 1 : this.currPage;
